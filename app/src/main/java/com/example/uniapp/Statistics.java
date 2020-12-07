@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 public class Statistics extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class Statistics extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
     }
 
-    public ArrayList<String> getNotes(Date start, Date end){
+    public ArrayList<String> getNotes(Calendar start, Calendar end){
         ArrayList<String> notes = new ArrayList<String>();
 
         //Something here to get the right notes

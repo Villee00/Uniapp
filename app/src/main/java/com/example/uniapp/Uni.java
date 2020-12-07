@@ -1,35 +1,47 @@
 package com.example.uniapp;
 
-import java.util.Date;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.util.Calendar;
+
+@Entity(tableName = "uni_table")
 public class Uni {
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
+
     private float duration;
-    private Date pvm;
-    private int quality;
+    private Calendar pvm;
+    //private int quality;
     private String note;
 
-    public Uni(float duartion, Date pvm, int quality, String note){
+    public Uni(float duration, Calendar pvm, String note){
         this.duration = duration;
         this.pvm = pvm;
-        this.quality = quality;
+        //this.quality = quality;
         this.note = note;
-    }
-    public Uni(float duration, Date pvm, int quality){
-        this.duration = duration;
-        this.pvm = pvm;
-        this.quality = quality;
     }
 
     public float getDuration(){
         return duration;
     }
-    public Date getPvm(){
+    public Calendar getPvm(){
         return this.pvm;
     }
-    public int getQuality(){
+    /*public int getQuality(){
         return quality;
-    }
+    }*/
     public String getNote(){
         return note;
+    }
+    public void setDuration(float duration) { this.duration = duration; }
+    public void setPvm(Calendar pvm) { this.pvm = pvm; }
+    //public void setQuality(int quality) { this.quality = quality; }
+    public void setNote(String note) { this.note = note; }
+
+
+    @Override
+    public String toString() {
+        return "Date: " + this.pvm.getTime();
     }
 }
