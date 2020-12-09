@@ -11,21 +11,19 @@ public class Uni {
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
-    private float duration;
+    private int duration;
     private Calendar pvm;
     private int quality;
     private String note;
 
-
-
-    public Uni(float duration, Calendar pvm, int quality, String note){
+    public Uni(int duration, Calendar pvm, int quality, String note){
         this.duration = duration;
         this.pvm = pvm;
         this.quality = quality;
         this.note = note;
     }
 
-    public float getDuration(){
+    public int getDuration(){
         return duration;
     }
     public Calendar getPvm(){
@@ -37,7 +35,7 @@ public class Uni {
     public String getNote(){
         return note;
     }
-    public void setDuration(float duration) { this.duration = duration; }
+    public void setDuration(int duration) { this.duration = duration; }
     public void setPvm(Calendar pvm) { this.pvm = pvm; }
     public void setQuality(int quality) { this.quality = quality; }
     public void setNote(String note) { this.note = note; }
