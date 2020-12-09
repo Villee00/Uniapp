@@ -173,5 +173,12 @@ public class MainActivity extends AppCompatActivity {
         tallennettavaMuistiinpano = muistiinpano.getText().toString();
         unenLaatu = laatu.getProgress();
         calendar.getTime();
+        int duration = (nukuttuTunnit * 60) + nukuttuMinuutit;
+
+        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
+                .allowMainThreadQueries()
+                .build();
+
+        db.uniDao().addUni(new Uni(duration, calendar, unenLaatu, tallennettavaMuistiinpano));
     }
 }
