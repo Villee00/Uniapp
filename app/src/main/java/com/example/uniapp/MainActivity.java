@@ -2,6 +2,7 @@ package com.example.uniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         date = dateFormat.format(calendar.getTime());
         dateTimeDisplay.setText(date);
 
+        //nappi nukkumisen historiaan
+        findViewById(R.id.buttonBarChart).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BarChartActivity.class));
+            }
+        });
     }
 
     public void nukkumaan(View v){
