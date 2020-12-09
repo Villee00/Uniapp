@@ -21,7 +21,7 @@ public class PieChartActivity extends AppCompatActivity {
 
         PieChart pieChart = findViewById(R.id.pieChart);
 
-        //PieEntry value ja data pitää muuttaa halutuksi ajoiksi ja syötettyjen määrien keskiarvoksi?
+        //PieEntry value ja data pitää muuttaa halutuksi ajoiksi
         ArrayList<PieEntry> sleep = new ArrayList<>();
         sleep.add(new PieEntry(1, 8));
         sleep.add(new PieEntry(2, 6.5));

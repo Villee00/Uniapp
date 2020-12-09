@@ -37,15 +37,6 @@ public class BarChartActivity extends AppCompatActivity {
         hoursOfSleep.add(new BarEntry(6, 6));
         hoursOfSleep.add(new BarEntry(7, 6));
 
-        //unen laatu esimerkki
-        ArrayList<BarEntry> sleepQuality = new ArrayList<>();
-        sleepQuality.add(new BarEntry(1, 10));
-        sleepQuality.add(new BarEntry(2, 7));
-        sleepQuality.add(new BarEntry(3, 3));
-        sleepQuality.add(new BarEntry(4, 10));
-        sleepQuality.add(new BarEntry(5, 6));
-        sleepQuality.add(new BarEntry(6, 7));
-        sleepQuality.add(new BarEntry(7, 6));
 
         //palkkien ulkonäkö
         BarDataSet barDataSet = new BarDataSet(hoursOfSleep, "Hours of Sleep");
@@ -53,12 +44,9 @@ public class BarChartActivity extends AppCompatActivity {
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
 
-        BarDataSet barDataSet2 = new BarDataSet(sleepQuality, "Sleep Quality");
-        barDataSet2.setColors(Color.GREEN);
-        barDataSet2.setValueTextColor(Color.BLACK);
-        barDataSet2.setValueTextSize(16f);
 
-        BarData barData = new BarData(barDataSet, barDataSet2);
+        //luo tilasto
+        BarData barData = new BarData(barDataSet);
 
         //koko tilaston ulkonäkö
         barChart.setFitBars(true);
