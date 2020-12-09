@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 @Entity(tableName = "uni_table")
 public class Uni {
@@ -12,13 +13,15 @@ public class Uni {
 
     private float duration;
     private Calendar pvm;
-    //private int quality;
+    private int quality;
     private String note;
 
-    public Uni(float duration, Calendar pvm, String note){
+
+
+    public Uni(float duration, Calendar pvm, int quality, String note){
         this.duration = duration;
         this.pvm = pvm;
-        //this.quality = quality;
+        this.quality = quality;
         this.note = note;
     }
 
@@ -28,15 +31,15 @@ public class Uni {
     public Calendar getPvm(){
         return this.pvm;
     }
-    /*public int getQuality(){
+    public int getQuality(){
         return quality;
-    }*/
+    }
     public String getNote(){
         return note;
     }
     public void setDuration(float duration) { this.duration = duration; }
     public void setPvm(Calendar pvm) { this.pvm = pvm; }
-    //public void setQuality(int quality) { this.quality = quality; }
+    public void setQuality(int quality) { this.quality = quality; }
     public void setNote(String note) { this.note = note; }
 
 
