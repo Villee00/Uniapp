@@ -11,6 +11,8 @@
     //nappi nukkumisen viikkohistoriaan
     <Button
         android:id="@+id/buttonBarChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="Sleep History"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
