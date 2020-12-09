@@ -8,37 +8,33 @@ import java.util.Calendar;
 @Entity(tableName = "uni_table")
 public class Uni {
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    protected int uid;
 
     private float duration;
     private Calendar pvm;
-    //private int quality;
+    private int quality;
     private String note;
 
-    public Uni(float duration, Calendar pvm, String note){
+    public Uni(float duration, Calendar pvm, int quality, String note){
         this.duration = duration;
         this.pvm = pvm;
-        //this.quality = quality;
+        this.quality = quality;
         this.note = note;
     }
 
-    public float getDuration(){
-        return duration;
-    }
+    public float getDuration(){ return duration; }
     public Calendar getPvm(){
         return this.pvm;
     }
-    /*public int getQuality(){
-        return quality;
-    }*/
+    public int getQuality(){ return quality; }
     public String getNote(){
         return note;
     }
+
     public void setDuration(float duration) { this.duration = duration; }
     public void setPvm(Calendar pvm) { this.pvm = pvm; }
-    //public void setQuality(int quality) { this.quality = quality; }
-    public void setNote(String note) { this.note = note; }
-
+    public void setQuality(int quality) { this.quality = quality; }
+    public void setNote(String note) { this.note = note;}
 
     @Override
     public String toString() {
