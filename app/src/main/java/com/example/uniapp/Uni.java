@@ -77,13 +77,13 @@ public class Uni {
     public void setPvm(Calendar pvm) { this.pvm = pvm; }
 
     /**
-     * Method to get the quality of the sleep
+     * Method to set the quality of the sleep
      * @param quality quality of the sleep in percent as int
      * */
     public void setQuality(int quality) { this.quality = quality; }
 
     /**
-     * Method to get the note associated with the sleep entry
+     * Method to set the note associated with the sleep entry
      * @param note note associated with the sleep entry
      * */
     public void setNote(String note) { this.note = note; }
