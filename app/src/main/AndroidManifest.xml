@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uniapp">
-        <activity android:name=".PieChartActivity"></activity>
+        <activity android:name=".QualityOverview"></activity>
         <activity android:name=".BarChartActivity" />
         <activity android:name=".Notes" />
         <activity android:name=".Statistics" />

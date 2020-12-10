@@ -64,15 +64,17 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.setData(barData);
         barChart.setDrawValueAboveBar(true);
         barChart.setHorizontalScrollBarEnabled(true);
+        barChart.setDragEnabled(true);
+        barChart.setVisibleXRangeMaximum(7);
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setAvoidFirstLastClipping(true);
-        xAxis.setLabelRotationAngle(120);
+        xAxis.setLabelRotationAngle(45);
         xAxis.setDrawLabels(true);
-        //xAxis.setAxisMaximum(7);
+        xAxis.setAxisMaximum(5);
         xAxis.setLabelCount(labelNames.size());
 
         xAxis.setValueFormatter(new ValueFormatter() {
@@ -83,11 +85,13 @@ public class BarChartActivity extends AppCompatActivity {
         });
 
         barChart.invalidate();
-        //nappi vie unien yhteenvetoon: PieChartActivity
-        findViewById(R.id.buttonPieChart).setOnClickListener(new View.OnClickListener() {
+
+
+        //nappi vie unien yhteenvetoon:
+        findViewById(R.id.buttonQualityOverview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PieChartActivity.class));
+                startActivity(new Intent(getApplicationContext(), QualityOverview.class));
             }
         });
 
