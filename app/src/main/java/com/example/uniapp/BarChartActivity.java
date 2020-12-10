@@ -4,14 +4,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.BarLineChartBase;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -20,15 +15,15 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
+/**
+ * Class for creating and showing sleep data in a bar chart
+ * @author Karina Raikula
+ * @version 1.0 12/2020
+ */
 public class BarChartActivity extends AppCompatActivity {
     ArrayList<String> labelNames = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +33,14 @@ public class BarChartActivity extends AppCompatActivity {
 
         uniDatabase db = uniDatabase.getInstance(this);
         List<Uni> on = db.uniDao().loadAllUni();
-
+/**
+ * An ArrayList hoursOfSleep is created to store user inputs of sleep time
+ * User inputs are added to the list using a for-loop
+ * Dates of inputs are saved to another ArrayList labelNames using the same loop
+ * SimpleDateFormat class to choose the format in which the date will be displayed
+ */
         ArrayList<BarEntry> hoursOfSleep = new ArrayList<>();
-
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM"); //Select the format in which the date will be displayed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM");
 
         for (int i = 0; i < on.size(); i++) {
             hoursOfSleep.add(new BarEntry(i, on.get(i).getDuration()));
@@ -50,15 +48,22 @@ public class BarChartActivity extends AppCompatActivity {
             labelNames.add(date);
         }
 
-        BarDataSet barDataSet = new BarDataSet(hoursOfSleep, "Hours of Sleep");
-        BarData barData = new BarData(barDataSet);
+/**
+ * MPChart is used to generate the chart in this activity
+ * Creating the bar chart from ArrayList hoursOfSleep
+  */
 
+        BarDataSet barDataSet = new BarDataSet(hoursOfSleep, "Unihistoria");
+        BarData barData = new BarData(barDataSet);
+/**
+ * Setting chart functions and visual details
+ */
         barDataSet.setColor(Color.GRAY);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
-        barChart.setFitBars(true);
 
-        barChart.getDescription().setText("Bar Chart Example");
+        barChart.setFitBars(true);
+        barChart.getDescription().setText("Unihistoriasi");
         barChart.animateY(2000);
         barChart.setDragEnabled(true);
         barChart.setData(barData);
@@ -67,16 +72,22 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(7);
 
+ /**
+  * Accessing the X Axis of the chart to add visual details
+  */
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setDrawGridLines(false);
-        xAxis.setAvoidFirstLastClipping(true);
-        xAxis.setLabelRotationAngle(45);
-        xAxis.setDrawLabels(true);
-        xAxis.setAxisMaximum(5);
-        xAxis.setLabelCount(labelNames.size());
-
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setLabelCount(labelNames.size());
+            xAxis.setDrawAxisLine(false);
+            xAxis.setDrawGridLines(false);
+            xAxis.setAvoidFirstLastClipping(true);
+            xAxis.setLabelRotationAngle(45);
+            xAxis.setDrawLabels(true);
+/**
+  * Method to get the dates saved to the list labelNames to be put as the labels of X axis
+  * @return String int value returns the date of a sleep entry as a bar label on the X axis
+  *
+  */
         xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
@@ -85,16 +96,18 @@ public class BarChartActivity extends AppCompatActivity {
         });
 
         barChart.invalidate();
-
-
-        //nappi vie unien yhteenvetoon:
+/**
+ * Button that takes the user to view their sleep quality counter
+ */
         findViewById(R.id.buttonQualityOverview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), QualityOverview.class));
             }
         });
-
+/**
+ * Button that takes the user to view their notes
+ */
         findViewById(R.id.buttonNotes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,21 +116,3 @@ public class BarChartActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-/*
-        if (on.get(q).getQuality() < 25) {
-            barDataSet.setColor(Color.GRAY);
-        }
-        else if (on.get(q).getQuality() >= 25 && on.get(q).getQuality() < 50) {
-            barDataSet.setColor(Color.YELLOW);
-        }
-        else if (on.get(q).getQuality() >= 50 && on.get(q).getQuality() <= 75) {
-            barDataSet.setColor(Color.CYAN);
-        }
-        else if (on.get(q).getQuality() > 75 && on.get(q).getQuality() <= 100) {
-            barDataSet.setColor(Color.GREEN);
-        }
-
- */

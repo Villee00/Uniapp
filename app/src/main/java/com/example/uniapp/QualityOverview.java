@@ -7,13 +7,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
-
+/**
+ * Class for showing a counter for sleep qualities
+ * @author Karina Raikula
+ * @version 1.0 12/2020
+ */
 public class QualityOverview extends AppCompatActivity {
 
     public TextView bestSleepInput;
     public TextView okSleepInput;
-    public  TextView badSleepInput;
+    public TextView badSleepInput;
 
+/**
+* Creating and initialising counters for three different sleep qualities
+*/
     int bestSleepCounter = 0;
     int okSleepCounter = 0;
     int badSleepCounter = 0;
@@ -25,11 +32,17 @@ public class QualityOverview extends AppCompatActivity {
 
         uniDatabase db = uniDatabase.getInstance(this);
         List<Uni> on = db.uniDao().loadAllUni();
-
+/**
+ * Connecting TextWiew variables to their layout file counterparts
+ */
         bestSleepInput = findViewById(R.id.textViewBestInput);
-        okSleepInput = findViewById(R.id.textViewKeskivertoInput);
+        okSleepInput = findViewById(R.id.textViewOkInput);
         badSleepInput = findViewById(R.id.textViewBadInput);
 
+/**
+ * same for loop as in BarChartActivity to count different types of quality inputs
+ * inputs of quality added to their respective counters and set as text to show the user
+ */
         for (int i = 0; i < on.size(); i++) {
             if (on.get(i).getQuality() < 40) {
                 badSleepCounter++;
