@@ -1,6 +1,7 @@
 package com.example.uniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,13 +26,18 @@ public class Statistics extends AppCompatActivity {
         startActivity(nextActivity);
     }
 
-    public static ArrayList<String> getNotes(){
+    public ArrayList<String> getNotes(){
         ArrayList<String> notes = new ArrayList<>();
 
-        //Something here to get the right notes
-        /*Uni uni = new Uni(8, Calendar.getInstance(), "Hyvät unet");
-        notes.add(uni.getNote());*/
+        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
+                .allowMainThreadQueries()
+                .build();
 
+        ArrayList<Uni> unet = (ArrayList<Uni>) db.uniDao().loadAllUni();
+
+        for (int i = 0; i < unet.size(); i++){
+            notes.add(unet.get(i).getNote());
+        }
         return notes;
     }
 }

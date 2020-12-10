@@ -1,10 +1,13 @@
 package com.example.uniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -25,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private String nukkumaanmenoMinuutit;
     private String herätysTunnit;
     private String herätysMinuutit;
+    private String tallennettavaMuistiinpano;
     int ntunnit = 0;
     int nminuutit = 0;
     int htunnit = 0;
     int hminuutit = 0;
     int nukuttuMinuutit = 0;
     int nukuttuTunnit = 0;
+    int unenLaatu = 0;
     private TextView nukuttuAika;
 
     @Override
@@ -46,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
         date = dateFormat.format(calendar.getTime());
         dateTimeDisplay.setText(date);
 
+        //nappi nukkumisen historiaan
+        findViewById(R.id.buttonBarChart).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BarChartActivity.class));
+            }
+        });
     }
 
     public void nukkumaan(View v){
@@ -58,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         herätys.setVisibility(View.VISIBLE);
         peruutus.setVisibility(View.VISIBLE);
         nukkumaanmenoAika.setVisibility(View.VISIBLE);
+
+        tallennettavaMuistiinpano = "";
 
         calendar = Calendar.getInstance();
         laskettavaTunnit = new SimpleDateFormat("HH");
@@ -85,8 +99,13 @@ public class MainActivity extends AppCompatActivity {
         Button herätys = (Button)findViewById(R.id.herätysButton);
         Button nukkumaan = (Button)findViewById(R.id.nukkumaanButton);
         Button peruutus = (Button)findViewById(R.id.peruutusButton);
+        Button tallenna = (Button)findViewById(R.id.tallennaButton);
         nukkumaanmenoAika = (TextView)findViewById(R.id.nukkumaanmenoAika);
         nukuttuAika = (TextView)findViewById(R.id.nukuttuAika);
+        SeekBar laatu = (SeekBar)findViewById(R.id.laatu);
+        TextView arvioi = (TextView)findViewById(R.id.arvioi);
+        TextView muisti = (TextView)findViewById(R.id.muisti);
+        TextView muistiinpano = (TextView)findViewById(R.id.muistiinpano);
 
         herätys.setVisibility(View.INVISIBLE);
         nukkumaan.setVisibility(View.VISIBLE);
@@ -123,5 +142,43 @@ public class MainActivity extends AppCompatActivity {
         nukuttuAika.setVisibility(View.VISIBLE);
         herätys.setVisibility(View.INVISIBLE);
         nukkumaan.setVisibility(View.VISIBLE);
+        laatu.setVisibility(View.VISIBLE);
+        tallenna.setVisibility(View.VISIBLE);
+        arvioi.setVisibility(View.VISIBLE);
+        muisti.setVisibility(View.VISIBLE);
+        muistiinpano.setVisibility(View.VISIBLE);
+    }
+    public void tallennus(View v){
+
+        Button herätys = (Button)findViewById(R.id.herätysButton);
+        Button nukkumaan = (Button)findViewById(R.id.nukkumaanButton);
+        Button peruutus = (Button)findViewById(R.id.peruutusButton);
+        Button tallenna = (Button)findViewById(R.id.tallennaButton);
+        nukkumaanmenoAika = (TextView)findViewById(R.id.nukkumaanmenoAika);
+        nukuttuAika = (TextView)findViewById(R.id.nukuttuAika);
+        SeekBar laatu = (SeekBar)findViewById(R.id.laatu);
+        TextView arvioi = (TextView)findViewById(R.id.arvioi);
+        TextView muisti = (TextView)findViewById(R.id.muisti);
+        TextView muistiinpano = (TextView)findViewById(R.id.muistiinpano);
+
+        herätys.setVisibility(View.INVISIBLE);
+        nukkumaan.setVisibility(View.VISIBLE);
+        nukuttuAika.setVisibility(View.INVISIBLE);
+        laatu.setVisibility(View.INVISIBLE);
+        tallenna.setVisibility(View.INVISIBLE);
+        arvioi.setVisibility(View.INVISIBLE);
+        muisti.setVisibility(View.INVISIBLE);
+        muistiinpano.setVisibility(View.INVISIBLE);
+
+        tallennettavaMuistiinpano = muistiinpano.getText().toString();
+        unenLaatu = laatu.getProgress();
+        calendar.getTime();
+        int duration = (nukuttuTunnit * 60) + nukuttuMinuutit;
+
+        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
+                .allowMainThreadQueries()
+                .build();
+
+        db.uniDao().addUni(new Uni(duration, calendar, unenLaatu, tallennettavaMuistiinpano));
     }
 }
