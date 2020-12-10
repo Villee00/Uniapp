@@ -7,22 +7,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.Calendar;
-/**
- * This class is for showing the notes associated with sleep entries in a ListView
- * @author Jussi Enne
- * @version 1.0 12/2020
- */
+
 public class Notes extends AppCompatActivity {
+    Calendar start;
+    Calendar end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Statistics stats = new Statistics();
         setContentView(R.layout.activity_notes);
         ListView lv = findViewById(R.id.lv_notes);
         lv.setAdapter(new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                Statistics.getNotes()                       //Get notes from Statistics class as an ArrayList
+                stats.getNotes()
         ));
     }
 }

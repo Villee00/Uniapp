@@ -3,6 +3,7 @@ package com.example.uniapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,12 +29,7 @@ public class Statistics extends AppCompatActivity {
 
     public ArrayList<String> getNotes(){
         ArrayList<String> notes = new ArrayList<>();
-
-        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
-                .allowMainThreadQueries()
-                .build();
-
-        ArrayList<Uni> unet = (ArrayList<Uni>) db.uniDao().loadAllUni();
+        ArrayList<Uni> unet = (ArrayList<Uni>) uniDatabase.getInstance(this).uniDao().loadAllUni();
 
         for (int i = 0; i < unet.size(); i++){
             notes.add(unet.get(i).getNote());
