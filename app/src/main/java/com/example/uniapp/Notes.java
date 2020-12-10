@@ -7,10 +7,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.Calendar;
-
+/**
+ * This class is for showing the notes in a ListView
+ * @author Jussi Enne
+ * @version 1.0 12/2020
+ */
 public class Notes extends AppCompatActivity {
-    Calendar start;
-    Calendar end;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class Notes extends AppCompatActivity {
         lv.setAdapter(new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                stats.getNotes()
+                stats.getNotes()                        //ArrayList of strings to be shown in the ListView
         ));
     }
 }
