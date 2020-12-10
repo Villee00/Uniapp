@@ -26,7 +26,7 @@ public class Statistics extends AppCompatActivity {
         startActivity(nextActivity);
     }
 
-    public ArrayList<String> getNotes(){
+    public static ArrayList<String> getNotes(){
         ArrayList<String> notes = new ArrayList<>();
 
         uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
