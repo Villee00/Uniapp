@@ -27,7 +27,7 @@ public class Statistics extends AppCompatActivity {
         startActivity(nextActivity);
     }
 
-    public static ArrayList<String> getNotes(){
+    public ArrayList<String> getNotes(){
         ArrayList<String> notes = new ArrayList<>();
         ArrayList<Uni> unet = (ArrayList<Uni>) uniDatabase.getInstance(this).uniDao().loadAllUni();
 
