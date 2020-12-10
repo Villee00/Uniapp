@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -32,7 +33,8 @@ public class Statistics extends AppCompatActivity {
         ArrayList<Uni> unet = (ArrayList<Uni>) uniDatabase.getInstance(this).uniDao().loadAllUni();
 
         for (int i = 0; i < unet.size(); i++){
-            notes.add(unet.get(i).getNote());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM"); //Select the format in which the date will be displayed
+            notes.add(sdf.format(unet.get(i).getPvm().getTime()) + " " + unet.get(i).getDuration() + "h " + unet.get(i).getNote()); //construct the notes string
         }
         return notes;
     }

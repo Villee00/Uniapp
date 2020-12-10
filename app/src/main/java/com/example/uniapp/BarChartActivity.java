@@ -79,7 +79,7 @@ public class BarChartActivity extends AppCompatActivity {
             }
         });
 
- /*       findViewById(R.id.buttonNotes).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonNotes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Notes.class ));
@@ -87,7 +87,7 @@ public class BarChartActivity extends AppCompatActivity {
         });
 
 
-  */
+
     }
     public class MyAxisValues extends ValueFormatter{
 
