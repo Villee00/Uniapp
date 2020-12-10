@@ -13,9 +13,13 @@ import java.util.GregorianCalendar;
 
 @Entity(tableName = "uni_table")
 public class Uni {
-    @PrimaryKey(autoGenerate = true)
+    public int getUid() {
+        return uid;
+    }
 
+    @PrimaryKey(autoGenerate = true)
     public int uid;
+
     private float duration;
     private Calendar pvm;
     private int quality;

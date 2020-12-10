@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -44,13 +45,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dateTimeDisplay = (TextView)findViewById(R.id.textViewDate);
+        dateTimeDisplay = (TextClock)findViewById(R.id.textViewDate);
 
         calendar = Calendar.getInstance();
-
-        dateFormat = new SimpleDateFormat("HH:mm");
-        date = dateFormat.format(calendar.getTime());
-        dateTimeDisplay.setText(date);
 
         db = uniDatabase.getInstance(this);
         //nappi nukkumisen historiaan
@@ -81,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         nukkumaanMenoTunnit = laskettavaTunnit.format(calendar.getTime());
         nukkumaanmenoMinuutit = laskettavaMinuutit.format(calendar.getTime());
 
+        dateFormat = new SimpleDateFormat("HH:mm");
+        date = dateFormat.format(calendar.getTime());
         nukkumaanmenoAika.setText("Menty nukkumaan " + date);
     }
     public void peruutus(View v){

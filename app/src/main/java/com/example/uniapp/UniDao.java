@@ -47,5 +47,5 @@ public interface UniDao {
      * Delete a specifict uni in the database.
      */
     @Query("DELETE FROM uni_table")
-    void deleteUni();
+    void deleteAllUni();
 }
