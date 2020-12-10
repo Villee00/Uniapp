@@ -24,7 +24,7 @@ public class Uni {
     /**
      * Constructor to create a Uni object.
      * @param duration sleep duration in hours
-     * @param pvm date when the sleeping began as a Calendar object
+     * @param pvm date when the sleeping ended as a Calendar object
      * @param quality quality of the sleep in percent
      * @param note a note associated with each sleeping entry
      */
@@ -43,8 +43,8 @@ public class Uni {
         return duration;
     }
     /**
-     * Method to get the start date of the sleep
-     * @return Calendar pvm start date of the sleeping as a Calendar object
+     * Method to get the end date of the sleep
+     * @return Calendar pvm end date of the sleeping as a Calendar object
      * */
     public Calendar getPvm(){
         return this.pvm;
@@ -64,9 +64,28 @@ public class Uni {
         return note;
     }
 
+    /**
+     * Method to set the duration of the sleep
+     * @param duration duration of the sleep in hours as int
+     */
     public void setDuration(float duration) { this.duration = duration; }
+
+    /**
+     * Method to set the end date of the sleep
+     * @param pvm end date of the sleeping as a Calendar object
+     * */
     public void setPvm(Calendar pvm) { this.pvm = pvm; }
+
+    /**
+     * Method to get the quality of the sleep
+     * @param quality quality of the sleep in percent as int
+     * */
     public void setQuality(int quality) { this.quality = quality; }
+
+    /**
+     * Method to get the note associated with the sleep entry
+     * @param note note associated with the sleep entry
+     * */
     public void setNote(String note) { this.note = note; }
 
 
