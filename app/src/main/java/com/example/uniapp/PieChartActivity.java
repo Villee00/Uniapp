@@ -23,9 +23,8 @@ public class PieChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pie_chart);
         PieChart pieChart = findViewById(R.id.pieChart);
         int q = 0;
-
-        uniDatabase.getInstance(this).uniDao().loadAllUni();
-        List<Uni> on = uniDatabase.getInstance(this).uniDao().loadAllUni();
+        uniDatabase db = uniDatabase.getInstance(this);
+        List<Uni> on = db.uniDao().loadAllUni();
 
         //PiirakkaEntry
         ArrayList<PieEntry> sleep = new ArrayList<>();

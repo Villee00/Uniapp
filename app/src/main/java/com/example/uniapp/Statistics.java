@@ -1,21 +1,14 @@
 package com.example.uniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public class Statistics extends AppCompatActivity {
-    //public static final String EXTRA = "com.example.uniapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

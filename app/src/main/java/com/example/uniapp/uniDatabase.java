@@ -15,7 +15,12 @@ public abstract class uniDatabase extends RoomDatabase {
 
      private static uniDatabase instance;
 
-
+     /**
+      * Method to check if database instance is already created.
+      * If not it will put the given context to be main instance
+      *
+      * @param context current context to be used in whole program
+      * */
      public static uniDatabase getInstance(Context context) {
           if (instance == null) {
                synchronized (uniDatabase.class) {
