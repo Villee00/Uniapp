@@ -24,12 +24,8 @@ public class PieChartActivity extends AppCompatActivity {
         PieChart pieChart = findViewById(R.id.pieChart);
         int q = 0;
 
-        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
-                .allowMainThreadQueries()
-                .build();
-
-        db.uniDao().loadAllUni();
-        List<Uni> on = db.uniDao().loadAllUni();
+        uniDatabase.getInstance(this).uniDao().loadAllUni();
+        List<Uni> on = uniDatabase.getInstance(this).uniDao().loadAllUni();
 
         //PiirakkaEntry
         ArrayList<PieEntry> sleep = new ArrayList<>();

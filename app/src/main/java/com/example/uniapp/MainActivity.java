@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int unenLaatu = 0;
     private TextView nukuttuAika;
 
+    public uniDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         date = dateFormat.format(calendar.getTime());
         dateTimeDisplay.setText(date);
 
+        db = uniDatabase.getInstance(this);
         //nappi nukkumisen historiaan
         findViewById(R.id.buttonBarChart).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -174,10 +176,6 @@ public class MainActivity extends AppCompatActivity {
         unenLaatu = laatu.getProgress();
         calendar.getTime();
         int duration = (nukuttuTunnit * 60) + nukuttuMinuutit;
-
-        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
-                .allowMainThreadQueries()
-                .build();
 
         db.uniDao().addUni(new Uni(duration, calendar, unenLaatu, tallennettavaMuistiinpano));
     }
