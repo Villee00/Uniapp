@@ -1,31 +1,31 @@
 package com.example.uniapp;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
- * This class is a dataobject for Database calling
+ * This interface is meant to have all the methods that can be used to communicate
+ * with the local database
  * @author Ville Haapamäki
- * @version 1.0 12/2020
  */
 @Dao
 public interface UniDao {
     /**
-     * This is used when you want to insert data to database
+     * Inserting Uni objects to database
+     * @param uni can be given as an one object or list of Uni:s also
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addUni(Uni... uni);
 
     /**
-     * Delete a specifict uni in the database.
+     * Delete an object from the database
+     * @param id delete the object that matches given id
      */
     @Query("DELETE FROM uni_table WHERE uid = :id")
     void deleteUni(int id);
@@ -38,7 +38,10 @@ public interface UniDao {
     List<Uni> loadAllUni();
 
     /**
-     * Query to get objects from specifict time frame
+     * LoaduniDates gets all the dates between them
+     * @param from Date that date search is starting
+     * @param to Date that is the last day to be included in the search
+     * @return List of Uni that has all the data between given dates
      */
     @Query("SELECT * FROM uni_table WHERE pvm BETWEEN :from AND :to")
     List<Uni> loadUniDates(Calendar from, Calendar to);

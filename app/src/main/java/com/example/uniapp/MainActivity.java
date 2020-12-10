@@ -1,7 +1,6 @@
 package com.example.uniapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextClock;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

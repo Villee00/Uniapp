@@ -4,7 +4,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 /**
  * This class includes the variables and methods associated with saving sleeping data as an object
  * @author Jussi Enne
@@ -13,10 +12,6 @@ import java.util.GregorianCalendar;
 
 @Entity(tableName = "uni_table")
 public class Uni {
-    public int getUid() {
-        return uid;
-    }
-
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
@@ -39,6 +34,11 @@ public class Uni {
         this.note = note;
     }
 
+    /**
+     * Method to get the id of an object that is in the database
+     * @return int uid id of the object
+     */
+    public int getUid() { return uid; }
     /**
      * Method to get the duration of the sleep
      * @return float duration duration of the sleep in hours
