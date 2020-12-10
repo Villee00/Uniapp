@@ -3,14 +3,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PieChartActivity extends AppCompatActivity {
 
@@ -18,22 +21,25 @@ public class PieChartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
-
         PieChart pieChart = findViewById(R.id.pieChart);
+        int q = 0;
 
-        //PieEntry value ja data pitää muuttaa halutuksi ajoiksi
+        uniDatabase db = Room.databaseBuilder(getApplicationContext(), uniDatabase.class, "unet")
+                .allowMainThreadQueries()
+                .build();
+
+        db.uniDao().loadAllUni();
+        List<Uni> on = db.uniDao().loadAllUni();
+
+        //PiirakkaEntry
         ArrayList<PieEntry> sleep = new ArrayList<>();
-        sleep.add(new PieEntry(1, 8));
-        sleep.add(new PieEntry(2, 6.5));
-        sleep.add(new PieEntry(3, 7.5));
-        sleep.add(new PieEntry(4, 6));
-        sleep.add(new PieEntry(5, 3.4));
-        sleep.add(new PieEntry(6, 7));
-        sleep.add(new PieEntry(7, 8));
-
+        for(int i=0; i< on.size(); i++){
+            on.get(i).getDuration();
+            sleep.add(new PieEntry(i, on.get(i).getDuration())); }
 
         //piirakan ulkonäkö
         PieDataSet pieDataSet = new PieDataSet(sleep, "Sleep");
+
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
