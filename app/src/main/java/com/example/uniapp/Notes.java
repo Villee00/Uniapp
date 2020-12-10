@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import java.util.Calendar;
 /**
- * This class is for showing the notes in a ListView
+ * This activity is for showing the notes in a ListView
  * @author Jussi Enne
  * @version 1.0 12/2020
  */
