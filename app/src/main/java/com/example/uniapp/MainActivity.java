@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageView imageView;
     private TextView dateTimeDisplay;
     private TextView nukkumaanmenoAika;
     private Calendar calendar;
@@ -107,11 +109,13 @@ public class MainActivity extends AppCompatActivity {
         TextView arvioi = (TextView)findViewById(R.id.arvioi);
         TextView muisti = (TextView)findViewById(R.id.muisti);
         TextView muistiinpano = (TextView)findViewById(R.id.muistiinpano);
+        ImageView imageView = (ImageView)findViewById(R.id.imageViewbackground);
 
         herätys.setVisibility(View.INVISIBLE);
         nukkumaan.setVisibility(View.VISIBLE);
         peruutus.setVisibility(View.INVISIBLE);
         nukkumaanmenoAika.setVisibility(View.INVISIBLE);
+        imageView.setVisibility(View.INVISIBLE);
 
         calendar = Calendar.getInstance();
         laskettavaTunnit = new SimpleDateFormat("HH");
@@ -148,6 +152,16 @@ public class MainActivity extends AppCompatActivity {
         arvioi.setVisibility(View.VISIBLE);
         muisti.setVisibility(View.VISIBLE);
         muistiinpano.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.VISIBLE);
+
+        nukuttuAika.bringToFront();
+        nukkumaan.bringToFront();
+        laatu.bringToFront();
+        tallenna.bringToFront();
+        arvioi.bringToFront();
+        muisti.bringToFront();
+        muistiinpano.bringToFront();
+
     }
     public void tallennus(View v){
 
@@ -161,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         TextView arvioi = (TextView)findViewById(R.id.arvioi);
         TextView muisti = (TextView)findViewById(R.id.muisti);
         TextView muistiinpano = (TextView)findViewById(R.id.muistiinpano);
+        ImageView imageView = (ImageView)findViewById(R.id.imageViewbackground);
 
         herätys.setVisibility(View.INVISIBLE);
         nukkumaan.setVisibility(View.VISIBLE);
@@ -170,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         arvioi.setVisibility(View.INVISIBLE);
         muisti.setVisibility(View.INVISIBLE);
         muistiinpano.setVisibility(View.INVISIBLE);
+        imageView.setVisibility(View.INVISIBLE);
 
         tallennettavaMuistiinpano = muistiinpano.getText().toString();
         unenLaatu = laatu.getProgress();

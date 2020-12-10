@@ -43,7 +43,7 @@ public class BarChartActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM");
 
         for (int i = 0; i < on.size(); i++) {
-            hoursOfSleep.add(new BarEntry(i, on.get(i).getDuration()));
+            hoursOfSleep.add(new BarEntry(i, on.get(i).getDuration()/60));
             String date = sdf.format(on.get(i).getPvm().getTime());
             labelNames.add(date);
         }
