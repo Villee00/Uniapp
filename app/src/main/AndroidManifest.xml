@@ -9,11 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uniapp">
-        <activity android:name=".QualityOverview"></activity>
-        <activity android:name=".BarChartActivity" />
-        <activity android:name=".Notes" />
-        <activity android:name=".Statistics" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".QualityOverview" android:screenOrientation="portrait"></activity>
+        <activity android:name=".BarChartActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Notes" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
