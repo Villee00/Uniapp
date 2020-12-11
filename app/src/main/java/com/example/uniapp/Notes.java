@@ -25,6 +25,7 @@ public class Notes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         updateUI();
         ArrayList<String> notes = new ArrayList<>();
         uniDatabase db = uniDatabase.getInstance(this);
@@ -52,7 +53,6 @@ public class Notes extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Uni selectedItem = (Uni) parent.getItemAtPosition(position);
 
-                Log.d("UID", Integer.toString(unet.get(position).getUid()));
                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     /**
                      * When an listview object is clicked this will open a ask promt where user has

@@ -29,6 +29,7 @@ public class QualityOverview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quality_overview);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uniDatabase db = uniDatabase.getInstance(this);
         List<Uni> on = db.uniDao().loadAllUni();

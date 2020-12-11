@@ -29,6 +29,7 @@ public class BarChartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_chart);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /**
          * Button that takes the user to view their sleep quality counter
          */
