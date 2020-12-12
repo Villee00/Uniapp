@@ -18,7 +18,7 @@ import java.util.Calendar;
  * This is the main activity, and it mostly controls the starting screen
  * of the app and the functionality within, such as calculating the amount slept
  * and storing it, the date, the quality and notes into the database
- *
+ * @author Joona Puustelli
  */
 public class MainActivity extends AppCompatActivity {
 

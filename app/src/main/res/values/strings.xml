@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Uniapp</string>
+    <string name="historia">Historia</string>
+    <string name="muistiinpanot">Muistiinpanot</string>
+    <string name="nukkumaan">Nukkumaan</string>
+    <string name="heratys">Herätys</string>
+    <string name="peru">Peru</string>
+    <string name="unihistoria">Unihistoria</string>
+    <string name="tallenna">Tallenna</string>
+    <string name="arvioi_unesi_laatu">Arvioi unesi laatu</string>
+    <string name="hyvat_unet">Hyvät unet:</string>
+    <string name="keskivertounet">Keskivertounet:</string>
+    <string name="huonot_unet">Huonot unet:</string>
 </resources>

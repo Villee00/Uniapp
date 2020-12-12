@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--author Ville Haapamäki-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
             android:id="@+id/DateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="10.12.2020 klo 10.20"
@@ -27,7 +28,7 @@
             android:id="@+id/NoteText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:text="Hyvät unet rauhallisessa paikassa"
             android:textColor="#FFFFFF"
@@ -38,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:text="6 Hours"
             android:textAlignment="textEnd"

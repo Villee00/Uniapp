@@ -7,6 +7,7 @@ import java.util.Calendar;
 /**
  * This class includes the variables and methods associated with saving sleeping data as an object
  * @author Jussi Enne
+ * @author Ville Haapamäki
  * @version 1.0 12/2020
  */
 

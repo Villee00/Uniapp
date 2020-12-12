@@ -57,10 +57,10 @@ public class BarChartActivity extends AppCompatActivity {
         addBarGraph(barChart);
     }
 
-    /**
-     * This method is creating a bar craft from the data that is stored in
-     * local database
-     */
+/**
+* This method is creating a bar craft from the data that is stored in
+* local database
+*/
     private void addBarGraph(BarChart barChart){
         barChart.invalidate();
         barChart.clear();
@@ -68,12 +68,12 @@ public class BarChartActivity extends AppCompatActivity {
         on = db.uniDao().loadAllUni();
         ArrayList<String> labelNames = new ArrayList<>();
 
-    /**
-     * An ArrayList hoursOfSleep is created to store user inputs of sleep time
-     * User inputs are added to the list using a for-loop
-     * Dates of inputs are saved to another ArrayList labelNames using the same loop
-     * SimpleDateFormat class to choose the format in which the date will be displayed
-     */
+/**
+ * An ArrayList hoursOfSleep is created to store user inputs of sleep time
+ * User inputs are added to the list using a for-loop
+ * Dates of inputs are saved to another ArrayList labelNames using the same loop
+ * SimpleDateFormat class to choose the format in which the date will be displayed
+ */
         ArrayList<BarEntry> hoursOfSleep = new ArrayList<>();
 
         for (int i = 0; i < on.size(); i++) {
@@ -109,22 +109,23 @@ public class BarChartActivity extends AppCompatActivity {
  */
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setLabelCount(on.size());
+
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setAvoidFirstLastClipping(true);
         xAxis.setLabelRotationAngle(45);
         xAxis.setDrawLabels(true);
-/**
- * Method to get the dates saved to the list labelNames to be put as the labels of X axis
- * @return String int value returns the date of a sleep entry as a bar label on the X axis
- *
- */
-    xAxis.setValueFormatter(new IndexAxisValueFormatter(getAreaCount()));
-    barChart.invalidate();
+
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(getDateLabels()));
+
     }
 
-    public ArrayList<String> getAreaCount() {
+    /**
+     * Method to get the dates in correct format to be displayed on bar chart
+     * @return String ArrayList that has all the dates that are displayed in the chart
+     *
+     */
+    public ArrayList<String> getDateLabels() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM");
         ArrayList<String> label = new ArrayList<>();
         for (int i = 0; i < on.size(); i++){

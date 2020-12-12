@@ -10,9 +10,9 @@ import java.util.Calendar;
  */
 public class Converters {
     /**
-     * Change an long obejct back to Calendar object
+     * Change an long object back to Calendar object
      * @param l long that is wanted to be switch to Calendar object
-     * @return Calendar object with the value of given long
+     * @return Calendar that is converted from the given long value
      */
     @TypeConverter
     public static Calendar toCalendar(Long l) {
@@ -22,9 +22,9 @@ public class Converters {
     }
 
     /**
-     * Change Calendar obeject to long object so it can be stored in the local database
+     * Change Calendar object to long object so it can be stored in the local database
      * @param c Calendar value that is wanted to change to long
-     * @return  Long obejct so it can be store to the database
+     * @return  Long that has the value of the given Calendar date
      */
     @TypeConverter
     public static Long fromCalendar(Calendar c){

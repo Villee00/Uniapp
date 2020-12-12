@@ -32,15 +32,23 @@ class CustomAdapter extends ArrayAdapter<Uni> {
         this.context = context;
     }
 
+    /**
+     * Method to get noteview and put the correct information in correct position
+     * @param position the object thats information is being inserted to the view
+     * @param convertView
+     * @param parent viewgroup that has all the fields so note_row.xml
+     * @return note view that has all the values inserted into it
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        //format the date to correct format
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm");
         String date = sdf.format(getItem(position).getPvm().getTime());
         String note = getItem(position).getNote();
         int minutes = (int) getItem(position).getDuration() % 60;
         int hours = (int) getItem(position).getDuration() / 60;
-        String amount =  hours + " tuntia " + minutes + " minuuttia"; //construct the notes string
+        String amount =  hours + " tuntia " + minutes + " minuuttia";
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         convertView = layoutInflater.inflate(mResource, parent, false);
 
